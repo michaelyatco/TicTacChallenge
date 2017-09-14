@@ -29,12 +29,20 @@ describe Position do
       expect(position.turn).to eq "o"
     end
   end
-  context "unmove" do
+  context "#unmove" do
     it "undos a move" do
       position = Position.new.move(1).unmove
       init = Position.new
       expect(position.board).to eq init.board
       expect(position.turn).to eq init.turn
+    end
+  end
+  context "#possible_moves" do
+    it "lists possible moves for initial position" do
+      expect(Position.new.possible_moves).to eq (0..8).to_a
+    end
+    it "lists possible moves for a position" do
+      expect(Position.new.move(3).possible_moves).to eq [0,1,2,4,5,6,7,8]
     end
   end
 end

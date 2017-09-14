@@ -26,4 +26,8 @@ class Position
     self
   end
 
+  def possible_moves
+    @board.map.with_index { |piece, index| piece == "-" ? index : nil }.compact
+  end
+
 end
