@@ -32,7 +32,9 @@ class Position
 
   def winning_combo
     (0..@size.pred).each_slice(@dimension).to_a +
-    (0..@size.pred).each_slice(@dimension).to_a.transpose
+    (0..@size.pred).each_slice(@dimension).to_a.transpose +
+    [ (0..@size.pred).step(@dimension.succ).to_a] +
+    [ (@dimension.pred..(@size-@dimension)).step(@dimension.pred).to_a]
   end
 
 end

@@ -54,6 +54,8 @@ describe Position do
       expect(winning_combo).to include [0,3,6]
       expect(winning_combo).to include [1,4,7]
       expect(winning_combo).to include [2,5,8]
+      expect(winning_combo).to include [0,4,8]
+      expect(winning_combo).to include [2,4,6]
     end
   end
 end
