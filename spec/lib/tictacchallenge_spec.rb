@@ -45,4 +45,15 @@ describe Position do
       expect(Position.new.move(3).possible_moves).to eq [0,1,2,4,5,6,7,8]
     end
   end
+  context "winning_combo" do
+    it "finds winning combination of row, columns, and diagonals" do
+      winning_combo = Position.new.winning_combo
+      expect(winning_combo).to include [0,1,2]
+      expect(winning_combo).to include [3,4,5]
+      expect(winning_combo).to include [6,7,8]
+      expect(winning_combo).to include [0,3,6]
+      expect(winning_combo).to include [1,4,7]
+      expect(winning_combo).to include [2,5,8]
+    end
+  end
 end

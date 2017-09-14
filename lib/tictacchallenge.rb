@@ -30,4 +30,9 @@ class Position
     @board.map.with_index { |piece, index| piece == "-" ? index : nil }.compact
   end
 
+  def winning_combo
+    (0..@size.pred).each_slice(@dimension).to_a +
+    (0..@size.pred).each_slice(@dimension).to_a.transpose
+  end
+
 end
