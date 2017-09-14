@@ -45,17 +45,35 @@ describe Position do
       expect(Position.new.move(3).possible_moves).to eq [0,1,2,4,5,6,7,8]
     end
   end
-  context "winning_combo" do
+  context "#winning_combo" do
     it "finds winning combination of row, columns, and diagonals" do
-      winning_combo = Position.new.winning_combo
-      expect(winning_combo).to include [0,1,2]
-      expect(winning_combo).to include [3,4,5]
-      expect(winning_combo).to include [6,7,8]
-      expect(winning_combo).to include [0,3,6]
-      expect(winning_combo).to include [1,4,7]
-      expect(winning_combo).to include [2,5,8]
-      expect(winning_combo).to include [0,4,8]
-      expect(winning_combo).to include [2,4,6]
+      winning_combo = Position.new(%w(0 1 2
+                                      3 4 5
+                                      6 7 8)).winning_combo
+      expect(winning_combo).to include (["0","1","2"])
+      expect(winning_combo).to include (["3","4","5"])
+      expect(winning_combo).to include (["6","7","8"])
+      expect(winning_combo).to include (["0","3","6"])
+      expect(winning_combo).to include (["1","4","7"])
+      expect(winning_combo).to include (["2","5","8"])
+      expect(winning_combo).to include (["0","4","8"])
+      expect(winning_combo).to include (["2","4","6"])
+    end
+  end
+  context "#victory?" do
+    it "determines no victory" do
+      expect(Position.new.victory?("x")).to eq false
+      expect(Position.new.victory?("o")).to eq false
+    end
+    it "determines victory for x" do
+      expect(Position.new(%w(x x x
+                             - - -
+                             - o o)).victory?("x")).to eq true
+    end
+    it "determines victory for o" do
+      expect(Position.new(%w(x x -
+                             - - -
+                             o o o)).victory?("o")).to eq true
     end
   end
 end
