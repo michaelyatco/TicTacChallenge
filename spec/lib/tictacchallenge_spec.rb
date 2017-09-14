@@ -29,4 +29,12 @@ describe Position do
       expect(position.turn).to eq "o"
     end
   end
+  context "unmove" do
+    it "undos a move" do
+      position = Position.new.move(1).unmove
+      init = Position.new
+      expect(position.board).to eq init.board
+      expect(position.turn).to eq init.turn
+    end
+  end
 end
