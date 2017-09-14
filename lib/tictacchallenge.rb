@@ -58,5 +58,16 @@ class Position
     return 0 if blocked?
   end
 
+  def minimax index=nil
+    move(index) if index
+    leaf_node_value = evaluate_leaf_node
+    return leaf_node_value if leaf_node_value
+    possible_moves.map { |index|
+      minimax(index).send(:-, @movelist.count+1)
+    }.send(:max)
+  ensure
+    unmove if index
+  end
+
 
 end

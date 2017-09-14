@@ -106,4 +106,16 @@ describe Position do
                              o o x), "x").evaluate_leaf_node).to eq 0
     end
   end
+  context "#minimax" do
+    it "determines an already victorious position" do
+      expect(Position.new(%w(x x -
+                             x o o
+                             x o o)).minimax).to eq 100
+    end
+    it "determines a victory in 1 move for x" do
+      expect(Position.new(%w(x x -
+                             - o o
+                             - - -), "x").minimax).to eq 99
+    end
+  end
 end
