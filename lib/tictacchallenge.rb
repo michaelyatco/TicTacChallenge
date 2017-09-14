@@ -63,8 +63,8 @@ class Position
     leaf_node_value = evaluate_leaf_node
     return leaf_node_value if leaf_node_value
     possible_moves.map { |index|
-      minimax(index).send(:-, @movelist.count+1)
-    }.send(:max)
+      minimax(index).send(@turn == "x" ? :- : :+, @movelist.count+1)
+    }.send(@turn == "x" ? :max : :min)
   ensure
     unmove if index
   end

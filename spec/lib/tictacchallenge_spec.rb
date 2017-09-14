@@ -117,5 +117,10 @@ describe Position do
                              - o o
                              - - -), "x").minimax).to eq 99
     end
+    it "determines a victory in 1 move for o" do
+      expect(Position.new(%w(x x -
+                             - o o
+                             - - -), "o").minimax).to eq -99
+    end
   end
 end
