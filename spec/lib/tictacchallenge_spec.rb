@@ -86,4 +86,24 @@ describe Position do
                              o x o)).blocked?).to eq true
     end
   end
+  context "#evaluate_leaf_node" do
+    it "determines nothing from initial position" do
+      expect(Position.new.evaluate_leaf_node).to eq nil
+    end
+    it "determines a victorious position for x" do
+      expect(Position.new(%w(x - -
+                             o x -
+                             o - x)).evaluate_leaf_node).to eq 100
+    end
+    it "determines a victorious position for o" do
+      expect(Position.new(%w(o x -
+                             o x -
+                             o - x), "o").evaluate_leaf_node).to eq -100
+    end
+    it "determines a blocked position" do
+      expect(Position.new(%w(o x -
+                             x x o
+                             o o x), "x").evaluate_leaf_node).to eq 0
+    end
+  end
 end

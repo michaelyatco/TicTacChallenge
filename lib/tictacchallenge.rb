@@ -52,5 +52,11 @@ class Position
     }
   end
 
+  def evaluate_leaf_node
+    return 100 if victory?("x")
+    return -100 if victory?("o")
+    return 0 if blocked?
+  end
+
 
 end
