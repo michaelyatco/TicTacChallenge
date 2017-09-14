@@ -69,5 +69,9 @@ class Position
     unmove if index
   end
 
+  def best_move
+    possible_moves.send(@turn == "x" ? :max_by : :min_by) {|index| minimax(index) }
+  end
+
 
 end

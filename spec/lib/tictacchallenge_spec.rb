@@ -123,4 +123,16 @@ describe Position do
                              - - -), "o").minimax).to eq -99
     end
   end
+  context "#best_move" do
+    it "finds the winning move for x" do
+      expect(Position.new(%w(x x -
+                             - - -
+                             o o -), "x").best_move).to eq 2
+    end
+    it "finds the winning move for o" do
+      expect(Position.new(%w(x x -
+                             - - -
+                             o o -), "o").best_move).to eq 8
+    end
+  end
 end
