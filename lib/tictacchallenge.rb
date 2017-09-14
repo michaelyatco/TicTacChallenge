@@ -73,5 +73,8 @@ class Position
     possible_moves.send(@turn == "x" ? :max_by : :min_by) {|index| minimax(index) }
   end
 
+  def finished?
+    victory?("x") || victory?("o") || @board.count("-") == 0
+  end
 
 end

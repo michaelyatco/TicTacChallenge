@@ -135,4 +135,24 @@ describe Position do
                              o o -), "o").best_move).to eq 8
     end
   end
+  context "#finished" do
+    it "sees a position has not finished" do
+      expect(Position.new.finished?).to eq false
+    end
+    it "sees a position has finished due to x's victory" do
+      expect(Position.new(%w(x x x
+                             - - -
+                             o o -)).finished?).to eq true
+    end
+    it "sees a position has finished due to o's victory" do
+      expect(Position.new(%w(x x -
+                             - - -
+                             o o o)).finished?).to eq true
+    end
+    it "sees a position has finished due to no more possible moves" do
+      expect(Position.new(%w(x x o
+                             o o x
+                             x x o)).finished?).to eq true
+    end
+  end
 end
