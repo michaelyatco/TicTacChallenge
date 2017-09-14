@@ -76,4 +76,14 @@ describe Position do
                              o o o)).victory?("o")).to eq true
     end
   end
+  context "#blocked?" do
+    it "determines not blocked" do
+      expect(Position.new.blocked?).to eq false
+    end
+    it "determines blocked" do
+      expect(Position.new(%w(x o x
+                             o x o
+                             o x o)).blocked?).to eq true
+    end
+  end
 end

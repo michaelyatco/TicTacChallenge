@@ -45,4 +45,12 @@ class Position
     }
   end
 
+  def blocked?
+    winning_combo.all? { |combo|
+      combo.any? { |combo_piece| combo_piece == "x" } &&
+      combo.any? { |combo_piece| combo_piece == "o" }
+    }
+  end
+
+
 end
