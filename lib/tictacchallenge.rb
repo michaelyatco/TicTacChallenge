@@ -77,4 +77,58 @@ class Position
     victory?("x") || victory?("o") || @board.count("-") == 0
   end
 
+  def to_s
+    @board.each_slice(@dimension).map { |line|
+      " " + line.map {|piece| piece == "-" ? " " : piece}.join(" | ") + " "
+    }.join("\n-----------\n") + "\n"
+  end
+end
+
+class TicTacToe
+
+  def determine_player
+    puts "Welcome to TicTacToe! Who will make the first move?"
+    puts "1. The Human"
+    puts "2. The CPU"
+    while true
+      print "choice: "
+      answer = gets.chomp
+      return "human" if answer == "1"
+      return "computer" if answer == "2"
+    end
+  end
+
+  def request_move position
+    while true
+      print "move: "
+      answer = gets.chomp
+      return answer.to_i if answer =~ /^\d+$/ && position.board[answer.to_i] == "-"
+    end
+  end
+
+  def other_player
+    @player == "human" ? "computer" : "human"
+  end
+
+  def play_round
+    @player = determine_player
+    position = Position.new
+    while !position.finished?
+      puts position
+      puts
+      index = @player == "human" ? request_move(position) : position.best_move
+      position.move(index)
+      @player = other_player
+    end
+    puts position
+    if position.blocked?
+      puts "Draw!"
+    else
+      puts "Winner - #{other_player}!"
+    end
+  end
+end
+
+if __FILE__ == $0
+  TicTacToe.new.play_round
 end
