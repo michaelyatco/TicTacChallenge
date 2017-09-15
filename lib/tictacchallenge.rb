@@ -87,7 +87,16 @@ end
 class TicTacToe
 
   def determine_player
-    puts "Welcome to TicTacToe! Who will make the first move?"
+    puts "\nWelcome to TicTacToe!"
+    puts "~Decide whether you or the computer will go first."
+    puts "~When the round begins, your choices are the numbers [0-8]."
+    puts "~Each number represents one of the nine spaces within the grid."
+    puts "~Starting in the top-left corner and moving right to complete the row, the numbers are assigned as you move through the grid."
+    puts "~0 represents the top-left corner, 1 the top-middle space, 2 the top right corner for the top row."
+    puts "~3 represents the middle-left space, 4 the middle, and 5 the middle-right space for the middle row."
+    puts "~6 represents the top-left corner, 7 the top-middle space, 8 the top right corner for the top row."
+    puts "\n~Ok! Let's start!~"
+    puts "\nWho will go first? Enter the number only:"
     puts "1. The Human"
     puts "2. The CPU"
     while true
@@ -115,6 +124,7 @@ class TicTacToe
     position = Position.new
     while !position.finished?
       puts position
+      @player == "human" ? puts("Your turn human!") : puts("I'm thinking...")
       puts
       index = @player == "human" ? request_move(position) : position.best_move
       position.move(index)
