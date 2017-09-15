@@ -99,7 +99,7 @@ class TicTacToe
     puts "\n~Ok! Let's start!~"
     puts "\nWho will go first? Enter the number only:"
     puts "1. The Human"
-    puts "2. The CPU"
+    puts "2. The Computer"
     while true
       print "choice: "
       answer = gets.chomp
@@ -139,14 +139,15 @@ class TicTacToe
     if position.blocked?
       puts "Draw!"
     else
-      puts "Winner - #{other_player}!"
+      puts "Winner - the #{other_player}!"
     end
-    puts "Play again? y/n"
+    puts "\nPlay another round? y/n"
     answer = gets
     if answer.downcase.strip == 'y'
       position = TicTacToe.new.play_round
       determine_player
     else
+      puts "\nTake care! Thanks for playing!"
       exit
     end
   end
