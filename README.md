@@ -2,9 +2,9 @@
 
 ## Instructions for Running the Program on Terminal
 
-* Clone this repository in your terminal ```git@github.com:michaelyatco/TicTacChallenge.git```.
-* In the file, advance to the ```/tictacchallenge/lib``` folder by typing ```cd lib/``` in the terminal.
-* Run the program by typing ```ruby tictacchallenge.rb```.
+* Clone this repository in your terminal ```git@github.com:michaelyatco/TicTacChallenge.git```
+* In the file, advance to the ```/tictacchallenge/lib``` folder by typing ```cd lib/``` in the terminal
+* Run the program by typing ```ruby tictactoe.rb```
 
 ## In-Game Instructions
 
